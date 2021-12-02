@@ -1,5 +1,5 @@
 # リプライパーサー
-class ReplieParser
+class ReplyParser
   def initialize
     # 初期化
   end
