@@ -69,13 +69,14 @@ class TwitterClient
     ck = gets.chomp
     STDERR.print 'CS: '
     cs = gets.chomp
-    api_keys = {}
-    api_keys['API_Key'] = ck
-    api_keys['API_Secret_Key'] = cs
+    api_keys = {
+      'API_Key' => ck,
+      'API_Secret_Key' => cs
+    }
     get_api_keys(api_keys)
   end
 
-  def save_api_keys(ck, cs, at, ats)
+  def save_api_keys(ck = nil, cs = nil, at = nil, ats = nil)
     # APIキーを保存する
     api_keys = {
       'API_Key' => ck,
@@ -86,5 +87,13 @@ class TwitterClient
     File.open(@api_keys_path, 'w') do |f|
       f.write api_keys.to_yaml
     end
+  end
+
+  def check_api_limits
+    # API制限を確認する
+    rate_limit = @client.rate_limit_status
+    puts 'API制限を確認しました。'
+    puts "Remaining: #{rate_limit.remaining_hits}"
+    puts "Reset: #{rate_limit.reset_time}"
   end
 end
