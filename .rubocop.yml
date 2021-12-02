@@ -1,0 +1,12 @@
+AllCops:
+  TargetRubyVersion: 3.0.2
+  Exclude:
+    - 'vendor/**/*'
+    - 'old_main.rb'
+    - 'old_main2.rb'
+
+# 日本語コメントぐらい使わせてくれ
+Style/AsciiComments:
+  Enabled: false
+
+  

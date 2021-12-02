@@ -1,6 +1,6 @@
 config.yml
 output.csv
-.rubocop.yml
+cache.json
 
 *.gem
 *.rbc
