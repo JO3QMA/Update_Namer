@@ -14,7 +14,6 @@ class TwitterClient
     api_keys = YAML.load_file(@api_keys_path)
     if !api_keys['Consumer_Key'].nil? && !api_keys['Consumer_Secret_Key'].nil? && !api_keys['Access_Token'].nil? && !api_keys['Access_Token_Secret'].nil?
       # CK, CS, AT, ATS全てある場合 ->  クライアントを作成する。
-      create_client(api_keys)
     elsif !api_keys['Consumer_Key'].nil? && !api_keys['Consumer_Secret_Key'].nil?
       # CK, CSのみある場合 ->  AT,ATSを取得して、ファイルに書き込む。
       api_keys = get_api_keys(api_keys)
@@ -25,6 +24,7 @@ class TwitterClient
       api_keys = get_api_keys(api_keys)
       save_api_keys(api_keys)
     end
+    create_client(api_keys)
   end
 
   def create_client(api_keys)
