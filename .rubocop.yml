@@ -9,4 +9,8 @@ AllCops:
 Style/AsciiComments:
   Enabled: false
 
-  
+# 流石に1関数に10行は少ない。
+# ついでにコメントもカウントしないでくれ
+Metrics/MethodLength:
+  CountComments: false
+  Max: 20
